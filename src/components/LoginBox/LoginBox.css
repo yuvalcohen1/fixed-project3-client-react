@@ -1,0 +1,43 @@
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: dodgerblue;
+  width: 25vw;
+  height: 85%;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.login-form {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login-form label {
+  display: block;
+  padding: 0 0 0.3rem 0;
+}
+
+.login-form input {
+  font-size: 1.3rem;
+  padding: 0.3rem;
+}
+
+.login-form button {
+  width: 40%;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  background-color: coral;
+  border: none;
+  border-radius: 5px;
+}
+
+.link-to-register {
+  align-self: center;
+  color: black;
+}
