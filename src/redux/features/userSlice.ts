@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserModel } from "../../models/User.model";
 import { RootState } from "../app/store";
-import { fetchUserAndSetJwtCookieByLogin } from "../thunks/user-thunks";
+import {
+  fetchUserAndSetJwtCookieByLogin,
+  fetchUserAndSetJwtCookieByRegister,
+} from "../thunks/user-thunks";
 
 export interface UserState {
   value: UserModel | null;
@@ -46,6 +49,27 @@ export const userSlice = createSlice({
       })
       .addCase(
         fetchUserAndSetJwtCookieByLogin.rejected,
+        (state, action: PayloadAction<any>) => {
+          state.status = "failed";
+          state.value = null;
+          state.statusCode = action.payload.status;
+          state.errorMessage = action.payload.data;
+        }
+      )
+      .addCase(fetchUserAndSetJwtCookieByRegister.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(
+        fetchUserAndSetJwtCookieByRegister.fulfilled,
+        (state, action) => {
+          state.status = "idle";
+          state.statusCode = 200;
+          state.value = action.payload;
+          state.errorMessage = "";
+        }
+      )
+      .addCase(
+        fetchUserAndSetJwtCookieByRegister.rejected,
         (state, action: PayloadAction<any>) => {
           state.status = "failed";
           state.value = null;

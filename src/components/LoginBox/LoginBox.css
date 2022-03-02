@@ -35,6 +35,7 @@
   background-color: coral;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .link-to-register {
